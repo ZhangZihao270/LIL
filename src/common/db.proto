@@ -1,0 +1,84 @@
+syntax = "proto2";
+
+option cc_generic_services = true;
+
+package dbinter;
+
+// The greeting service definition.
+service DbService {
+
+  rpc start(StartRequest) returns (StartReply) {}
+
+  rpc get(GetRequest) returns (GetReply) {}
+
+  rpc put(PutRequest) returns (PutReply) {}
+
+  rpc batch_put(BatchRequest) returns(BatchReply) {}
+
+  rpc commit(CommitRequest) returns (CommitReply) {}
+
+  rpc get_stat(StatRequest) returns (StatReply) {}
+
+  //rpc scan(ScanRequest) returns (ScanReply) {}
+
+  //rpc SayHello (HelloRequest) returns (HelloReply) {}
+};
+
+message StartRequest {
+  required int64 transId = 1;
+};
+
+message StartReply {
+  required int64 transId = 1;
+};
+
+message GetRequest {
+  required int64 transId = 1;
+  required int64 tableId = 2;
+  required int64 cols  = 3;
+  required int64 lockmode = 4;
+  required bytes key  = 5;
+};
+
+message GetReply { 
+  required bytes value = 1;
+};
+
+message PutRequest {
+  required int64 transId = 1;
+  required int64 tableId = 2;
+  required int64 dmltype = 3;
+  required int64 cols = 4;
+  required bytes key = 5;
+  required bytes value = 6;
+};
+
+message PutReply {
+  required int32 status = 1;
+};
+
+message BatchRequest {
+  required int64 transId = 1;
+  required bytes data    = 2;
+}
+
+message BatchReply {
+  required int32 status = 1;
+}
+
+message CommitRequest { 
+  required int64 transId = 1;
+  required int64 decision = 2;
+};
+
+message CommitReply {
+  required int32 status = 1;
+};
+
+message StatRequest {
+  required int32 nope = 1;
+}
+
+message StatReply {
+  required bytes value = 1;
+}

@@ -1,0 +1,9 @@
+*.project
+*.o
+db.grpc.pb.cc
+db.grpc.pb.h
+db.pb.cc
+db.pb.h
+TpccClient
+DbServer
+libcommon.a

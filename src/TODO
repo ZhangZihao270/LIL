@@ -1,0 +1,33 @@
+A) storage layer
+  1. memory allocator  [wdh] [done]
+  
+  2. multi-threaded support
+    multi worker threads [done]
+    multi io threads [done]
+
+  3. operation support 
+    insert support [done]
+    delete support [wdh]
+
+  4. range scan support
+
+B) transaction layer
+  1. transaction state manager [done]
+  
+  2. transactions life cycle support [done]
+  
+  3. lock manager
+    acquire/release locks for transactions
+    different implementations [wdh lock table]
+    different lock modes (read / write locks)
+    dead lock detection
+
+ 4. handle transaction abort/rollback [done]
+
+C) client-sided
+  1. tpcc workload generation [done]
+  2. multiple clients [wdh] [done]
+
+
+
+  is abort better than block ?
